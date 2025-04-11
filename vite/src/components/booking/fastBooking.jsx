@@ -111,7 +111,8 @@ const FastBooking = () => {
     selectedSlot.forEach((newSlot) => {
       const slotExists = newCart.some(
         (existingSlot) =>
-          existingSlot.slotID === newSlot._id && existingSlot.date === newSlot.date
+          existingSlot.slotID === newSlot._id &&
+          existingSlot.date === newSlot.date
       );
 
       // If the slot doesn't exist, add it to the cart
@@ -290,7 +291,10 @@ const FastBooking = () => {
                   onChange={handleChange}
                 />
                 {touched.customerName && errors.customerName && (
-                  <FormHelperText error id="standard-weight-helper-text--register">
+                  <FormHelperText
+                    error
+                    id="standard-weight-helper-text--register"
+                  >
                     {errors.customerName}
                   </FormHelperText>
                 )}
@@ -334,7 +338,9 @@ const FastBooking = () => {
                   value={values.fieldID}
                   onChange={(event) => {
                     setFieldValue("fieldID", event.target.value);
-                    let field = fields.find((item) => item.id === event.target.value);
+                    let field = fields.find(
+                      (item) => item.id === event.target.value
+                    );
                     console.log(field, "<=== field");
                     setField(field);
                     fetchBookings(field);
@@ -383,7 +389,9 @@ const FastBooking = () => {
                           setSelectedDate(newValue);
                           setChangeOccured(!changeOccured);
                         }}
-                        renderInput={(params) => <TextField {...params} fullWidth />}
+                        renderInput={(params) => (
+                          <TextField {...params} fullWidth />
+                        )}
                       />
                     </LocalizationProvider>
 
@@ -408,15 +416,21 @@ const FastBooking = () => {
                               sx={{
                                 padding: 2,
                                 border: "1px solid",
-                                borderColor: selectedSlot.some((obj) => obj._id === slot._id)
+                                borderColor: selectedSlot.some(
+                                  (obj) => obj._id === slot._id
+                                )
                                   ? "secondary.dark"
                                   : "grey.300",
                                 borderRadius: 2,
                                 cursor: isBooked ? "not-allowed" : "pointer",
                                 backgroundColor:
-                                  selectedSlot.some((obj) => obj._id === slot._id) ||
+                                  selectedSlot.some(
+                                    (obj) => obj._id === slot._id
+                                  ) ||
                                   cart.some(
-                                    (obj) => obj._id === slot._id && obj.date === slot.date
+                                    (obj) =>
+                                      obj._id === slot._id &&
+                                      obj.date === slot.date
                                   )
                                     ? "secondary.light"
                                     : "white",
@@ -424,7 +438,9 @@ const FastBooking = () => {
                                 textAlign: "center",
                                 opacity: isBooked ? 0.5 : 1,
                               }}
-                              onClick={() => !isBooked && handleSlotSelection(slot)}
+                              onClick={() =>
+                                !isBooked && handleSlotSelection(slot)
+                              }
                             >
                               <Typography variant="body1" component="p">
                                 {slot.to} - {slot.from}
@@ -446,7 +462,8 @@ const FastBooking = () => {
                         disabled={selectedSlot.length === 0 || !selectedDate}
                         onClick={handleAddToCart}
                       >
-                        Add To Booking <IconShoppingCartFilled style={{ marginLeft: "8px" }} />
+                        Add To Booking{" "}
+                        <IconShoppingCartFilled style={{ marginLeft: "8px" }} />
                       </Button>
                     </Box>
                   </CardContent>
@@ -454,9 +471,16 @@ const FastBooking = () => {
               </Grid>
               <FormControl
                 fullWidth
-                sx={{ justifyContent: "center", alignItems: "center", width: "100%" }}
+                sx={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "100%",
+                }}
               >
-                <Typography variant="h3" sx={{ ...theme.typography.customInput }}>
+                <Typography
+                  variant="h3"
+                  sx={{ ...theme.typography.customInput }}
+                >
                   Slots
                 </Typography>
                 {cart.length === 0 ? (
@@ -476,8 +500,14 @@ const FastBooking = () => {
                             {name}
                           </Typography>
                           {Object.keys(groupedItems[name]).map((date) => (
-                            <Box key={date} sx={{ marginLeft: 2, marginBottom: 2 }}>
-                              <Typography variant="subtitle1" sx={{ color: "text.secondary" }}>
+                            <Box
+                              key={date}
+                              sx={{ marginLeft: 2, marginBottom: 2 }}
+                            >
+                              <Typography
+                                variant="subtitle1"
+                                sx={{ color: "text.secondary" }}
+                              >
                                 {date}
                               </Typography>
                               <List>
@@ -488,7 +518,9 @@ const FastBooking = () => {
                                         <IconButton
                                           edge="end"
                                           aria-label="delete"
-                                          onClick={() => handleRemoveItem(slot._id)}
+                                          onClick={() =>
+                                            handleRemoveItem(slot._id)
+                                          }
                                         >
                                           <DeleteIcon />
                                         </IconButton>

@@ -23,6 +23,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import { IconQrcode } from "@tabler/icons-react";
 
 // Validation schema
 const validationSchema = Yup.object({
@@ -104,7 +105,78 @@ const CreateField = () => {
     });
     const sportType = await axios.get("/sportType");
     setSportType(sportType.data.result.results);
-    setLocation(location.data.result.results);
+    console.log(location, "<== =location");
+    // setLocation(location.data.result.results);
+    setLocation([
+      { name: "Gulshan-e-Iqbal", id: 1 },
+      { name: "Gulshan-e-Iqbal", id: 2 },
+      { name: "Korangi", id: 3 },
+      { name: "DHA", id: 4 },
+      { name: "Clifton", id: 5 },
+      { name: "Gulistan-e-Johar", id: 6 },
+      { name: "Nazimabad", id: 7 },
+      { name: "North Nazimabad", id: 8 },
+      { name: "Malir", id: 9 },
+      { name: "Landhi", id: 10 },
+      { name: "Lyari", id: 11 },
+      { name: "Saddar", id: 12 },
+      { name: "Garden", id: 13 },
+      { name: "Shah Faisal", id: 14 },
+      { name: "New Karachi", id: 15 },
+      { name: "North Karachi", id: 16 },
+      { name: "Orangi Town", id: 17 },
+      { name: "Baldia Town", id: 18 },
+      { name: "Site Area", id: 19 },
+      { name: "Hawksbay", id: 20 },
+      { name: "Paradise Point", id: 21 },
+      { name: "French Beach", id: 22 },
+      { name: "Sandspit", id: 23 },
+      { name: "Hawkes Bay", id: 24 },
+      { name: "Cape Monze", id: 25 },
+      { name: " Mubarak Village", id: 26 },
+      { name: "Paradise Point", id: 27 },
+      { name: "French Beach", id: 28 },
+      { name: "Sandspit", id: 29 },
+      { name: "Hawkes Bay", id: 30 },
+      { name: "Cape Monze", id: 31 },
+      { name: " Mubarak Village", id: 32 },
+      { name: "Paradise Point", id: 33 },
+      { name: "French Beach", id: 34 },
+      { name: "Sandspit", id: 35 },
+      { name: "Hawkes Bay", id: 36 },
+      { name: "Cape Monze", id: 37 },
+      { name: " Mubarak Village", id: 38 },
+      { name: "Paradise Point", id: 39 },
+      { name: "French Beach", id: 40 },
+      { name: "Sandspit", id: 41 },
+      { name: "Hawkes Bay", id: 42 },
+      { name: "Cape Monze", id: 43 },
+      { name: " Mubarak Village", id: 44 },
+      { name: "Paradise Point", id: 45 },
+      { name: "French Beach", id: 46 },
+      { name: "Sandspit", id: 47 },
+      { name: "Hawkes Bay", id: 48 },
+      { name: "Cape Monze", id: 49 },
+      { name: " Mubarak Village", id: 50 },
+      { name: "Paradise Point", id: 51 },
+      { name: "French Beach", id: 52 },
+      { name: "Sandspit", id: 53 },
+      { name: "Hawkes Bay", id: 54 },
+      { name: "Cape Monze", id: 55 },
+      { name: " Mubarak Village", id: 56 },
+      { name: "Paradise Point", id: 57 },
+      { name: "French Beach", id: 58 },
+      { name: "Sandspit", id: 59 },
+      { name: "Hawkes Bay", id: 60 },
+      { name: "Cape Monze", id: 61 },
+      { name: " Mubarak Village", id: 62 },
+      { name: "Paradise Point", id: 63 },
+      { name: "French Beach", id: 64 },
+      { name: "Sandspit", id: 65 },
+      { name: "Hawkes Bay", id: 66 },
+      { name: "Cape Monze", id: 67 },
+      { name: " Mubarak Village", id: 68 },
+    ]);
   };
 
   useEffect(() => {
@@ -171,7 +243,9 @@ const CreateField = () => {
                 error={Boolean(touched.name && errors.name)}
                 sx={{ ...theme.typography.customInput }}
               >
-                <InputLabel htmlFor="outlined-adornment-name-register">Field Name </InputLabel>
+                <InputLabel htmlFor="outlined-adornment-name-register">
+                  Field Name{" "}
+                </InputLabel>
                 <OutlinedInput
                   id="outlined-adornment-name-register"
                   value={values.name}
@@ -180,7 +254,10 @@ const CreateField = () => {
                   onChange={handleChange}
                 />
                 {touched.name && errors.name && (
-                  <FormHelperText error id="standard-weight-helper-text--register">
+                  <FormHelperText
+                    error
+                    id="standard-weight-helper-text--register"
+                  >
                     {errors.name}
                   </FormHelperText>
                 )}
@@ -202,7 +279,10 @@ const CreateField = () => {
                   onChange={handleChange}
                 />
                 {touched.description && errors.description && (
-                  <FormHelperText error id="standard-weight-helper-text--register">
+                  <FormHelperText
+                    error
+                    id="standard-weight-helper-text--register"
+                  >
                     {errors.description}
                   </FormHelperText>
                 )}
@@ -213,7 +293,9 @@ const CreateField = () => {
                   labelId="tags-sportType"
                   id="sportTypeID"
                   value={values.sportTypeID}
-                  onChange={(event) => setFieldValue("sportTypeID", event.target.value)}
+                  onChange={(event) =>
+                    setFieldValue("sportTypeID", event.target.value)
+                  }
                   // renderValue={(selected) => selected.join(', ')}
                 >
                   {sportType.map((item, i) => (
@@ -234,7 +316,9 @@ const CreateField = () => {
                 error={Boolean(touched.price && errors.price)}
                 sx={{ ...theme.typography.customInput }}
               >
-                <InputLabel htmlFor="outlined-adornment-block-register">Price </InputLabel>
+                <InputLabel htmlFor="outlined-adornment-block-register">
+                  Price{" "}
+                </InputLabel>
                 <OutlinedInput
                   id="outlined-adornment-block-register"
                   value={values.price}
@@ -243,7 +327,10 @@ const CreateField = () => {
                   onChange={handleChange}
                 />
                 {touched.price && errors.price && (
-                  <FormHelperText error id="standard-weight-helper-text--register">
+                  <FormHelperText
+                    error
+                    id="standard-weight-helper-text--register"
+                  >
                     {errors.price}
                   </FormHelperText>
                 )}
@@ -264,13 +351,19 @@ const CreateField = () => {
                   onChange={handleChange}
                 />
                 {touched.discount && errors.discount && (
-                  <FormHelperText error id="standard-weight-helper-text--register">
+                  <FormHelperText
+                    error
+                    id="standard-weight-helper-text--register"
+                  >
                     {errors.city}
                   </FormHelperText>
                 )}
               </FormControl>
               {user.role === "admin" ? (
-                <FormControl fullWidth sx={{ ...theme.typography.customSelect }}>
+                <FormControl
+                  fullWidth
+                  sx={{ ...theme.typography.customSelect }}
+                >
                   <InputLabel id="tags-label">Vendor</InputLabel>
                   <Select
                     labelId="vendor-ID"
@@ -297,7 +390,9 @@ const CreateField = () => {
                   labelId="location-ID"
                   id="locationID"
                   value={values.id}
-                  onChange={(event) => setFieldValue("locationID", event.target.value)}
+                  onChange={(event) =>
+                    setFieldValue("locationID", event.target.value)
+                  }
                 >
                   {location.map((item, i) => (
                     <MenuItem key={i} value={item.id}>
@@ -308,18 +403,33 @@ const CreateField = () => {
               </FormControl>
               <FormControl
                 fullWidth
-                sx={{ justifyContent: "center", alignItems: "center", width: "100%" }}
+                sx={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "100%",
+                }}
               >
-                <Typography variant="h3" sx={{ ...theme.typography.customInput }}>
+                <Typography
+                  variant="h3"
+                  sx={{ ...theme.typography.customInput }}
+                >
                   Slots
                 </Typography>
                 <FieldArray name="slots">
                   {({ push, remove }) => (
                     <div>
                       {values.slots.map((field, index) => (
-                        <Box key={index} mb={2} gap={1} display="flex" alignItems="center">
+                        <Box
+                          key={index}
+                          mb={2}
+                          gap={1}
+                          display="flex"
+                          alignItems="center"
+                        >
                           <FormControl>
-                            <InputLabel htmlFor={`slots[${index}].to`}>To</InputLabel>
+                            <InputLabel htmlFor={`slots[${index}].to`}>
+                              To
+                            </InputLabel>
                             <Field
                               id={`slots[${index}].to`}
                               as={OutlinedInput}
@@ -329,10 +439,15 @@ const CreateField = () => {
                               margin="normal"
                               disabled
                             />
-                            <ErrorMessage name={`slots[${index}].to`} component="div" />
+                            <ErrorMessage
+                              name={`slots[${index}].to`}
+                              component="div"
+                            />
                           </FormControl>
                           <FormControl>
-                            <InputLabel htmlFor={`slots[${index}].from`}>From</InputLabel>
+                            <InputLabel htmlFor={`slots[${index}].from`}>
+                              From
+                            </InputLabel>
                             <Field
                               id={`slots[${index}].from`}
                               as={OutlinedInput}
@@ -342,10 +457,15 @@ const CreateField = () => {
                               margin="normal"
                               disabled
                             />
-                            <ErrorMessage name={`slots[${index}].from`} component="div" />
+                            <ErrorMessage
+                              name={`slots[${index}].from`}
+                              component="div"
+                            />
                           </FormControl>
                           <FormControl>
-                            <InputLabel htmlFor={`slots[${index}].price`}>Price</InputLabel>
+                            <InputLabel htmlFor={`slots[${index}].price`}>
+                              Price
+                            </InputLabel>
                             <Field
                               id={`slots[${index}].price`}
                               as={OutlinedInput}
@@ -354,7 +474,10 @@ const CreateField = () => {
                               variant="outlined"
                               margin="normal"
                             />
-                            <ErrorMessage name={`slots[${index}].price`} component="div" />
+                            <ErrorMessage
+                              name={`slots[${index}].price`}
+                              component="div"
+                            />
                           </FormControl>
                           <FormControl>
                             <FormControlLabel
@@ -370,7 +493,9 @@ const CreateField = () => {
                                   color="primary"
                                 />
                               }
-                              label={field.isEnabled ? "Slot Open" : "Slot Closed"}
+                              label={
+                                field.isEnabled ? "Slot Open" : "Slot Closed"
+                              }
                             />
                           </FormControl>
                         </Box>
@@ -383,7 +508,12 @@ const CreateField = () => {
                 <DropzoneArea setFieldValue={setFieldValue} values={values} />
               </FormControl>
               <Grid item xs={12}>
-                <Button type="submit" size="large" variant="contained" color="secondary">
+                <Button
+                  type="submit"
+                  size="large"
+                  variant="contained"
+                  color="secondary"
+                >
                   Create Field
                 </Button>
               </Grid>
